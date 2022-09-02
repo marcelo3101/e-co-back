@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from flask_appbuilder import Model
 
 class Usuario(Model):
+    __tablename__="usuarios"
     email = Column(String(75), primary_key=True)
     nome =  Column(String(40), nullable=False)
     ecopoints = Column(Integer)
@@ -11,6 +12,7 @@ class Usuario(Model):
         return self.email   
 
 class Entrega(Model):
+    __tablename__="entregas"
     id_entrega = Column(String(75), primary_key=True)
     estado = Column(String(75), nullable=False)
     usuario = Column(String(75), ForeignKey('Usuario.email'),nullable=False)
@@ -20,7 +22,8 @@ class Entrega(Model):
     pontuacao = Column(Integer)
 
 
-class Ponto_Coleta(Model):
+class PontoColeta(Model):
+    __tablename__="pontos_coleta"
     nome = Column(String(40), primary_key=True)
     descricao =  Column(String(200))
     endereco =  Column(String(200), nullable=False)
@@ -28,7 +31,8 @@ class Ponto_Coleta(Model):
     def __repr__(self):
         return self.nome   
 
-class Cupons(Model):
+class Cupom(Model):
+    __tablename__="cupons"
     codigo = Column(String(20), primary_key=True)
     nome =  Column(String(40), nullable=False)
     empresa =  Column(String(50), nullable=False)
