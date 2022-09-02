@@ -1,8 +1,8 @@
+from app import db
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
-from flask_appbuilder import Model
 
-class Usuario(Model):
+class Usuario(db.Model):
     __tablename__="usuarios"
     email = Column(String(75), primary_key=True)
     nome =  Column(String(40), nullable=False)
@@ -11,7 +11,7 @@ class Usuario(Model):
     def __repr__(self):
         return self.email   
 
-class Entrega(Model):
+class Entrega(db.Model):
     __tablename__="entregas"
     id_entrega = Column(String(75), primary_key=True)
     estado = Column(String(75), nullable=False)
@@ -22,7 +22,7 @@ class Entrega(Model):
     pontuacao = Column(Integer)
 
 
-class PontoColeta(Model):
+class PontoColeta(db.Model):
     __tablename__="pontos_coleta"
     nome = Column(String(40), primary_key=True)
     descricao =  Column(String(200))
@@ -31,7 +31,7 @@ class PontoColeta(Model):
     def __repr__(self):
         return self.nome   
 
-class Cupom(Model):
+class Cupom(db.Model):
     __tablename__="cupons"
     codigo = Column(String(20), primary_key=True)
     nome =  Column(String(40), nullable=False)
