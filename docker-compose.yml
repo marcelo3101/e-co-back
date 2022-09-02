@@ -14,7 +14,7 @@ services:
       - 8000:8000
     environment:
       - FLASK_APP=main.py
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/database_dev
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/api_dev
     depends_on:
       - db
 
