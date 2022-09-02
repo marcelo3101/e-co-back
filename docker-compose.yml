@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: api
+    hostname: api_server
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: ['/ecoback/entrypoint.sh']
+    volumes:
+      - .:/ecoback
+    ports:
+      - 8000:8000
+    environment:
+      - FLASK_APP=main.py
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/database_dev
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    hostname: db_server
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
