@@ -1,10 +1,12 @@
-from app import db
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
+from app import db
+
 class Usuario(db.Model):
     __tablename__="usuarios"
-    email = Column(String(75), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    email = Column(String(75), unique=True)
     nome =  Column(String(40), nullable=False)
     ecopoints = Column(Integer)
 
@@ -13,18 +15,20 @@ class Usuario(db.Model):
 
 class Entrega(db.Model):
     __tablename__="entregas"
-    id_entrega = Column(String(75), primary_key=True)
-    estado = Column(String(75), nullable=False)
-    usuario = Column(String(75), ForeignKey('Usuario.email'),nullable=False)
-    ponto_coleta = Column(String(40), ForeignKey('Ponto_Coleta.nome'), nullable=False)
-    descricao =  Column(String(200))
-    categoria =  Column(String(40))
-    pontuacao = Column(Integer)
+    id = Column(Integer, primary_key=True)
+    estado = Column(Integer, nullable=False) # 1 - análise, 2 - confirmada
+    usuario = Column(String(75), ForeignKey('usuarios.id'),nullable=False)
+    ponto_coleta = Column(String(40), ForeignKey('pontos_coleta.id'), nullable=False)
+    descricao =  Column(String(200), nullable=True)
+    nome_produto =  Column(String(40), nullable=False)
+    categoria =  Column(String(40), nullable=False)
+    pontuacao = Column(Integer, nullable=True)
 
 
 class PontoColeta(db.Model):
     __tablename__="pontos_coleta"
-    nome = Column(String(40), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(40), unique=True)
     descricao =  Column(String(200))
     endereco =  Column(String(200), nullable=False)
    
