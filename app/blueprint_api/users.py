@@ -25,7 +25,7 @@ def get_user():
 
 
 @api.route("/user/<int:id>")
-def get_user(id):
+def get_user_id(id):
     user = Usuario.query.get_or_404(id)
     return jsonify(
         id = user.id,
