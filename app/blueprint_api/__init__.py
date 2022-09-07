@@ -2,4 +2,4 @@ from flask import Blueprint
 
 api = Blueprint("api", __name__)
 
-from . import users, deliveries
+from . import users, deliveries, cupons, pontos_coleta

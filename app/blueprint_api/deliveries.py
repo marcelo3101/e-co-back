@@ -44,7 +44,7 @@ def create_delivery():
     ), 201
 
 
-api.route("/delivery/confirm/<int:id>")  # Rota para simular a confirmação de uma entrega
+api.route("/delivery/confirm/<int:id>", methods=["POST"])  # Rota para simular a confirmação de uma entrega
 def confirm_delivery(id):
     """
         Rota que simula o scan do qrcode para confirmação da entrega
@@ -69,5 +69,22 @@ def confirm_delivery(id):
     usuario.ecopoints += 600
     db.session.bulk_save_objects([entrega, usuario])
     return jsonify(message="Entrega confirmada"), 200
+
+
+api.route("/delivery", methods=["GET"])
+def get_deliveries():
+    entregas = Entrega.query.all()
+    return jsonify([
+        {
+            "id": entrega.id,
+            "estado": entrega.estado,
+            "usuario": entrega.usuario,
+            "ponto_coleta": entrega.ponto_coleta,
+            "descricao": entrega.descricao,
+            "nome_produto": entrega.nome_produto,
+            "categoria": entrega.categoria,
+            "pontuacao": entrega.pontuacao
+        } for entrega in entregas
+    ])
 
     
