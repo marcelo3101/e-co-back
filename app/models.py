@@ -17,9 +17,9 @@ class Usuario(db.Model):
 class Entrega(db.Model):
     __tablename__="entregas"
     id = Column(Integer, primary_key=True)
-    estado = Column(Integer, nullable=False) # 1 - análise, 2 - confirmada
-    usuario = Column(String(75), ForeignKey("usuarios.id"),nullable=True)
-    ponto_coleta = Column(String(40), ForeignKey("pontos_coleta.id"), nullable=False)
+    estado = Column(Integer, nullable=False) # 1 - pendente, 2 - confirmada
+    usuario = Column(Integer, ForeignKey("usuarios.id"),nullable=True)
+    ponto_coleta = Column(Integer, ForeignKey("pontos_coleta.id"), nullable=False)
     descricao =  Column(String(200), nullable=True)
     nome_produto =  Column(String(40), nullable=False)
     categoria =  Column(String(40), nullable=False)
@@ -31,7 +31,7 @@ class PontoColeta(db.Model):
     id = Column(Integer, primary_key=True)
     nome = Column(String(40), unique=True)
     descricao =  Column(String(200))
-    endereco =  Column(String(200), nullable=False)
+    endereco =  Column(String(300), nullable=False)
    
     def __repr__(self):
         return self.nome   
