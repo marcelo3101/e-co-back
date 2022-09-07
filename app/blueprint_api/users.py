@@ -12,7 +12,7 @@ def get_user():
     if not(cpf):
         return jsonify(erro="Insira o CPF"), 400
     else:
-        user = Usuario.query.filter_by(cpf=cpf)
+        user = Usuario.query.filter_by(cpf=cpf).first()
         if not user:
             return jsonify(erro="Usuário não cadastrado")
         return jsonify(
