@@ -18,8 +18,8 @@ class Entrega(db.Model):
     __tablename__="entregas"
     id = Column(Integer, primary_key=True)
     estado = Column(Integer, nullable=False) # 1 - análise, 2 - confirmada
-    usuario = Column(String(75), ForeignKey('usuarios.id'),nullable=True)
-    ponto_coleta = Column(String(40), ForeignKey('pontos_coleta.id'), nullable=False)
+    usuario = Column(String(75), ForeignKey("usuarios.id"),nullable=True)
+    ponto_coleta = Column(String(40), ForeignKey("pontos_coleta.id"), nullable=False)
     descricao =  Column(String(200), nullable=True)
     nome_produto =  Column(String(40), nullable=False)
     categoria =  Column(String(40), nullable=False)
@@ -38,7 +38,7 @@ class PontoColeta(db.Model):
 
 class Cupom(db.Model):
     __tablename__="cupons"
-    codigo = Column(String(20), primary_key=True)
+    id = Column(Integer, primary_key=True)
     nome =  Column(String(40), nullable=False)
     empresa =  Column(String(50), nullable=False)
     descricao =  Column(String(200))
@@ -46,6 +46,10 @@ class Cupom(db.Model):
     data_validade = Column(Date,nullable=False)
 
     def __repr__(self):
-        return self.codigo
+        return self.id
 
-
+class CupomResgatado(db.Model):
+    __tablename__="cupons_resgatados"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
+    cupom_id = Column(Integer, ForeignKey("cupons.id"), nullable=False)    
