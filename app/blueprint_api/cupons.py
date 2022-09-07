@@ -6,8 +6,8 @@ from app import db
 from app.models import Cupom, CupomResgatado, Usuario
 
 
-api.route("/get_cupons")
-def get_cupons():
+@api.route("/get_cupons", methods=["GET"])
+def cupons():
     cupons = Cupom.query.all()
 
     return jsonify([
@@ -22,7 +22,7 @@ def get_cupons():
     ])
 
 
-api.route("/redeem/<int:id>", methods=["POST"])
+@api.route("/redeem/<int:id>", methods=["POST"])
 def redeem(id):
     """
         Resgatar cupom

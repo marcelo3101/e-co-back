@@ -4,7 +4,7 @@ from . import api
 from app.models import PontoColeta
 
 
-api.route("/pontos")
+@api.route("/pontos")
 def get_pontos():
     pontos = PontoColeta.query.all()
 

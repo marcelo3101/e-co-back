@@ -4,7 +4,7 @@ from . import api
 from app import db
 from app.models import Entrega, Usuario
 
-api.route("/delivery", methods=["POST"])
+@api.route("/delivery", methods=["POST"])
 def create_delivery():
     """
         Método para criar entregas
@@ -44,7 +44,7 @@ def create_delivery():
     ), 201
 
 
-api.route("/delivery/confirm/<int:id>", methods=["POST"])  # Rota para simular a confirmação de uma entrega
+@api.route("/delivery/confirm/<int:id>", methods=["POST"])  # Rota para simular a confirmação de uma entrega
 def confirm_delivery(id):
     """
         Rota que simula o scan do qrcode para confirmação da entrega
@@ -71,7 +71,7 @@ def confirm_delivery(id):
     return jsonify(message="Entrega confirmada"), 200
 
 
-api.route("/delivery", methods=["GET"])
+@api.route("/delivery", methods=["GET"])
 def get_deliveries():
     entregas = Entrega.query.all()
     return jsonify([
