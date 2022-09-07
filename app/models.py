@@ -6,6 +6,7 @@ from app import db
 class Usuario(db.Model):
     __tablename__="usuarios"
     id = Column(Integer, primary_key=True)
+    cpf = Column(String(11), unique=True, index=True)
     email = Column(String(75), unique=True)
     nome =  Column(String(40), nullable=False)
     ecopoints = Column(Integer)
