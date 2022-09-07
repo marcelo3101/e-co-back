@@ -22,3 +22,15 @@ def get_user():
             nome = user.nome,
             ecopoints = user.ecopoints
         )
+
+
+@api.route("/user/<int:id>")
+def get_user(id):
+    user = Usuario.query.get_or_404(id)
+    return jsonify(
+        id = user.id,
+        email = user.email,
+        cpf = user.cpf,
+        nome = user.nome,
+        ecopoints = user.ecopoints
+    )
