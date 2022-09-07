@@ -15,16 +15,16 @@ cors = CORS()
 
 def create_app():
     app = Flask(__name__)
-    db.init_app(app)
     cors.init_app(
         app,
         supports_credentials=True,
         resources={
             r"/*": {
-                "origins": "*"
+                "origins": ["http://localhost:5173"]
             }
         },
     )
+    db.init_app(app)
     app.config.from_object(Config)
     
     from .blueprint_api import api
