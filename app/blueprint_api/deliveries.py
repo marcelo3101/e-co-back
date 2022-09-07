@@ -83,7 +83,8 @@ def get_deliveries():
             "descricao": entrega.descricao,
             "nome_produto": entrega.nome_produto,
             "categoria": entrega.categoria,
-            "pontuacao": entrega.pontuacao
+            "pontuacao": entrega.pontuacao,
+            "img": entrega.img
         } for entrega in entregas
     ])
 

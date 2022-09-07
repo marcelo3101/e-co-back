@@ -32,7 +32,8 @@ def dev_db():
         empresa="Ifood",
         descricao="Faça seu pedido com entrega grátis para qualquer restaurante cadastrado!",
         custo=300,
-        data_validade=datetime(2022, 12, 1)    
+        data_validade=datetime(2022, 12, 1),
+        img="https://play-lh.googleusercontent.com/1Y_VGOwYBFGY30KWxT4EpFkxkhr4VXAnMdPtbF56yUVpPkbSVV5mGdCvw1RI7aNX8Q"
     )
 
     db.session.bulk_save_objects([user, ponto_coleta, cupom])
@@ -45,7 +46,8 @@ def dev_db():
         descricao="Entrega no ponto de coleta da unb",
         nome_produto="Celular Samsung J5 Pro",
         categoria="Smartphone",
-        pontuacao="500"
+        pontuacao="500",
+        img="https://t2.tudocdn.net/279701?w=151&h=304"
     )
 
     entrega_pendente = Entrega(
@@ -54,6 +56,7 @@ def dev_db():
         descricao="Entrega no ponto de coleta da unb",
         nome_produto="Bateria de carro Moura",
         categoria="Bateria",
+        img="https://s34918.pcdn.co/wp-content/themes/moura_portal_pagely/assets/images/content/automotive/bateria-automotiva.png"
     )
 
     db.session.bulk_save_objects([entrega_confirmada, entrega_pendente])

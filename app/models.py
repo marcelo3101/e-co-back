@@ -24,6 +24,7 @@ class Entrega(db.Model):
     nome_produto =  Column(String(40), nullable=False)
     categoria =  Column(String(40), nullable=False)
     pontuacao = Column(Integer, nullable=True)
+    img = Column(String(300), nullable=True)
 
 
 class PontoColeta(db.Model):
@@ -44,6 +45,7 @@ class Cupom(db.Model):
     descricao =  Column(String(200))
     custo = Column(Integer,nullable=False)
     data_validade = Column(Date,nullable=False)
+    img = Column(String(300), nullable=True)
 
     def __repr__(self):
         return self.id

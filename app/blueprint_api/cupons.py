@@ -17,7 +17,8 @@ def cupons():
             "empresa": cupom.empresa,
             "descricao": cupom.descricao,
             "custo": cupom.custo,
-            "data_validade": cupom.data_validade
+            "data_validade": cupom.data_validade,
+            "img": cupom.img
         } for cupom in cupons
     ])
 
