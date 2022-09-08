@@ -65,15 +65,17 @@ def confirm_delivery(id):
     
     entrega.pontuacao = 600
     entrega.usuario = user_id
+    entrega.estado = 2
     usuario: Usuario = Usuario.query.get(user_id)
     usuario.ecopoints += 600
     db.session.bulk_save_objects([entrega, usuario])
+    db.session.commit()
     return jsonify(message="Entrega confirmada"), 200
 
 
-@api.route("/delivery", methods=["GET"])
-def get_deliveries():
-    entregas = Entrega.query.all()
+@api.route("/delivery/many/<int:id>", methods=["GET"])
+def get_deliveries(id):
+    entregas = Entrega.query.filter(Entrega.usuario == id).all()
     return jsonify([
         {
             "id": entrega.id,
