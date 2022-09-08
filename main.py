@@ -24,7 +24,7 @@ def dev_db():
     ponto_coleta1 = PontoColeta(
         nome="Ponto de coleta Rodoviária",
         descricao="Ponto de coleta de lixo eletrônico",
-        endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.79384%2C-47.88338#map=18/-15.79384/-47.88338",
+        endereco="https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=-15.75917%2C-47.87075%3B-15.79385%2C-47.88337#map=15/-15.7756/-47.8608",
         latitude="-15.79384",
         longitude="-47.88338"
     )
@@ -32,7 +32,7 @@ def dev_db():
     ponto_coleta2 = PontoColeta(
         nome="Ponto de coleta UnB",
         descricao="Ponto de coleta de lixo eletrônico",
-        endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.76114%2C-47.86752#map=19/-15.76114/-47.86752",
+        endereco="https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=-15.75917%2C-47.87075%3B-15.76106%2C-47.86796#map=18/-15.76017/-47.86887",
         latitude="-15.76114",
         longitude="-47.86752"
     )
