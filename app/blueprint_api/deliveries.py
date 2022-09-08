@@ -90,7 +90,7 @@ def get_deliveries():
 
 
 @api.route("/delivery/<int:id>", methods=["GET"])
-def get_deliveries(id):
+def get_delivery(id):
     entrega = Entrega.query.get_or_404(id)
     return jsonify(
         {
