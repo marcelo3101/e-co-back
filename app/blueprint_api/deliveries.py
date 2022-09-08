@@ -88,4 +88,21 @@ def get_deliveries():
         } for entrega in entregas
     ])
 
+
+@api.route("/delivery/<int:id>", methods=["GET"])
+def get_deliveries(id):
+    entrega = Entrega.query.get_or_404(id)
+    return jsonify(
+        {
+            "id": entrega.id,
+            "estado": entrega.estado,
+            "usuario": entrega.usuario,
+            "ponto_coleta": entrega.ponto_coleta,
+            "descricao": entrega.descricao,
+            "nome_produto": entrega.nome_produto,
+            "categoria": entrega.categoria,
+            "pontuacao": entrega.pontuacao,
+            "img": entrega.img
+        })
+
     

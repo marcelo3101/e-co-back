@@ -37,7 +37,7 @@ def redeem(id):
     if db.session.query(db.exists().where(CupomResgatado.user_id == user.id, CupomResgatado.cupom_id == cupom.id)).scalar():
        return jsonify(message="Usuário já resgatou esse cupom")
 
-    if cupom.data_validade < datetime.date.today():
+    if cupom.data_validade < datetime.utcnow():
         return jsonify(erro="Cupom expirado")
     
     if cupom.custo > user.ecopoints:
