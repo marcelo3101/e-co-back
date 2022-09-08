@@ -93,13 +93,18 @@ def get_deliveries():
 def get_delivery(id):
     entrega = Entrega.query.get_or_404(id)
     user = Usuario.query.get(entrega.usuario)
+    nome = None
+    cpf = None
+    if user:
+        nome = user.nome
+        cpf = user.cpf
     ponto_coleta = PontoColeta.query.get(entrega.ponto_coleta)
     return jsonify(
         {
             "id": entrega.id,
             "estado": entrega.estado,
-            "cpf_usuario": user.cpf,
-            "nome_usuario": user.nome,
+            "cpf_usuario": cpf,
+            "nome_usuario": nome,
             "ponto_coleta": ponto_coleta.nome,
             "endereco": ponto_coleta.endereco,
             "descricao": entrega.descricao,

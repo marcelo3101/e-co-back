@@ -38,10 +38,10 @@ def redeem(id):
        return jsonify(message="Usuário já resgatou esse cupom")
 
     if cupom.data_validade < datetime.utcnow():
-        return jsonify(erro="Cupom expirado")
+        return jsonify(erro="Cupom expirado"), 400
     
     if cupom.custo > user.ecopoints:
-        return jsonify(erro="Usuário não possui ecopoints suficientes")
+        return jsonify(erro="Usuário não possui ecopoints suficientes"), 400
     
     user.ecopoints = user.ecopoints - cupom.custo
 
@@ -51,4 +51,4 @@ def redeem(id):
     )
     db.session.bulk_save_objects([resgate, user])
     db.session.commit()
-    return jsonify(message="Cupom resgatado")
+    return jsonify(message="Cupom resgatado"), 200
