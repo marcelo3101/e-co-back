@@ -1,3 +1,4 @@
+from xmlrpc.client import DateTime
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
@@ -44,7 +45,7 @@ class Cupom(db.Model):
     empresa =  Column(String(50), nullable=False)
     descricao =  Column(String(200))
     custo = Column(Integer,nullable=False)
-    data_validade = Column(Date,nullable=False)
+    data_validade = Column(db.DateTime,nullable=False)
     img = Column(String(300), nullable=True)
 
     def __repr__(self):
