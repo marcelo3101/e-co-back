@@ -2,7 +2,7 @@ from flask import jsonify, request
 
 from . import api
 from app import db
-from app.models import Entrega, Usuario
+from app.models import Entrega, PontoColeta, Usuario
 
 @api.route("/delivery", methods=["POST"])
 def create_delivery():
@@ -92,12 +92,16 @@ def get_deliveries():
 @api.route("/delivery/<int:id>", methods=["GET"])
 def get_delivery(id):
     entrega = Entrega.query.get_or_404(id)
+    user = Usuario.query.get(entrega.usuario)
+    ponto_coleta = PontoColeta.query.get(entrega.ponto_coleta)
     return jsonify(
         {
             "id": entrega.id,
             "estado": entrega.estado,
-            "usuario": entrega.usuario,
-            "ponto_coleta": entrega.ponto_coleta,
+            "cpf_usuario": user.cpf,
+            "nome_usuario": user.nome,
+            "ponto_coleta": ponto_coleta.nome,
+            "endereco": ponto_coleta.endereco,
             "descricao": entrega.descricao,
             "nome_produto": entrega.nome_produto,
             "categoria": entrega.categoria,
