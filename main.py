@@ -21,7 +21,15 @@ def dev_db():
         ecopoints = 500
     )
 
-    ponto_coleta = PontoColeta(
+    ponto_coleta1 = PontoColeta(
+        nome="Ponto de coleta Rodoviária",
+        descricao="Ponto de coleta de lixo eletrônico",
+        endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.79384%2C-47.88338#map=18/-15.79384/-47.88338",
+        latitude="-15.79384",
+        longitude="-47.88338"
+    )
+
+    ponto_coleta2 = PontoColeta(
         nome="Ponto de coleta UnB",
         descricao="Ponto de coleta de lixo eletrônico",
         endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.76114%2C-47.86752#map=19/-15.76114/-47.86752",
@@ -29,16 +37,24 @@ def dev_db():
         longitude="-47.86752"
     )
 
-    cupom = Cupom(
-        nome="Entrega grátis para qualquer pedido",
+    cupom1 = Cupom(
+        nome="Frete grátis para qualquer pedido",
         empresa="Ifood",
         descricao="Faça seu pedido com entrega grátis para qualquer restaurante cadastrado!",
         custo=300,
         data_validade=datetime(2022, 12, 1),
         img="https://play-lh.googleusercontent.com/1Y_VGOwYBFGY30KWxT4EpFkxkhr4VXAnMdPtbF56yUVpPkbSVV5mGdCvw1RI7aNX8Q"
     )
+    cupom2 = Cupom(
+        nome="Sobremesa grátis",
+        empresa="McDonalds",
+        descricao="Receba uma sobremesa de até 15 reais gratuitamente em uma das lojas cadastradas",
+        custo=400,
+        data_validade=datetime(2022, 11, 1),
+        img="https://www.mcdonalds.com.br/images/layout/mcdonalds-logo-bg-red.png"
+    )
 
-    db.session.bulk_save_objects([user, ponto_coleta, cupom])
+    db.session.bulk_save_objects([user, ponto_coleta1, ponto_coleta2, cupom1, cupom2])
     db.session.commit()
 
     entrega_confirmada = Entrega(
