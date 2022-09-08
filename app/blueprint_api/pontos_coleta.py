@@ -14,5 +14,7 @@ def get_pontos():
             "nome": ponto.nome,
             "descricao": ponto.descricao,
             "endereco": ponto.endereco,
+            "latitude": ponto.latitude,
+            "longitude": ponto.longitude
         } for ponto in pontos
     ])

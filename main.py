@@ -24,7 +24,9 @@ def dev_db():
     ponto_coleta = PontoColeta(
         nome="Ponto de coleta UnB",
         descricao="Ponto de coleta de lixo eletrônico",
-        endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.76114%2C-47.86752#map=19/-15.76114/-47.86752",       
+        endereco="https://www.openstreetmap.org/search?whereami=1&query=-15.76114%2C-47.86752#map=19/-15.76114/-47.86752",
+        latitude="-15.76114",
+        longitude="-47.86752"
     )
 
     cupom = Cupom(

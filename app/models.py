@@ -33,6 +33,8 @@ class PontoColeta(db.Model):
     id = Column(Integer, primary_key=True)
     nome = Column(String(40), unique=True)
     descricao =  Column(String(200))
+    latitude = Column(String(80))
+    longitude = Column(String(80))
     endereco =  Column(String(300), nullable=False)
    
     def __repr__(self):
